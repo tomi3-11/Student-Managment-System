@@ -24,7 +24,7 @@ void initDB(DataBase *db){
 
 
 // Add a user
-int addStudent(DataBase *db, int ID, char name[MAX_NAME_LEN], float grade){
+void addStudent(DataBase *db, int ID, char *name, float grade){
     // Check edge case where database is full
     if (db->count > MAX_STUDENTS){
         printf("DataBase Full");
@@ -42,11 +42,19 @@ int addStudent(DataBase *db, int ID, char name[MAX_NAME_LEN], float grade){
     db->count ++;
 }
 
-void printStudents(DataBase *db){
+void printStudents(const DataBase *db){
 
-    Student 
+    printf("----------Student List------------");
     for (int i = 0; i < db->count; i++){
-        printf("| ID | NAME | GRADE |");
-        printf("%d %c %f", )
+        printf("| ID: %d | NAME: %-20s | GRADE: %.2f |", db->students[i].ID, db->students[i].name, db->students[i].grade);
     }
+}
+
+int main(){
+    Database db; 
+
+    initDB(&db);
+    addStudent(&db, 12, 'Tom', 89.8);
+    printStudents(&db);
+    return 0;
 }
