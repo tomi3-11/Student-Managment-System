@@ -24,19 +24,19 @@ void initDB(DataBase *db){
 
 
 // Add a user
-void addStudent(DataBase *db, int ID, char *name, float grade){
+void addStudent(DataBase *db, int ID, const char *name, float grade){
     // Check edge case where database is full
     if (db->count > MAX_STUDENTS){
         printf("DataBase Full");
-        return NULL;
+        return;
     }
 
     // Add user details
-    Student s = &db->students[db->count];
+    Student *s = &db->students[db->count];
 
     s->ID = ID;
-    strncpy(s->name, name, MAX_STUDENTS-1);
-    s->name[MAX_STUDENTS - 1] = '\0';
+    strncpy(s->name, name, MAX_NAME_LEN-1);
+    s->name[MAX_NAME_LEN- 1] = '\0';
     s->grade = grade;
 
     db->count ++;
@@ -51,10 +51,10 @@ void printStudents(const DataBase *db){
 }
 
 int main(){
-    Database db; 
+    DataBase db; 
 
     initDB(&db);
-    addStudent(&db, 12, 'Tom', 89.8);
+    addStudent(&db, 12, "Tom", 89.8);
     printStudents(&db);
     return 0;
 }
