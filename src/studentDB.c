@@ -44,9 +44,9 @@ void addStudent(DataBase *db, int ID, const char *name, float grade){
 
 void printStudents(const DataBase *db){
 
-    printf("----------Student List------------");
+    printf("----------Student List------------\n");
     for (int i = 0; i < db->count; i++){
-        printf("| ID: %d | NAME: %-20s | GRADE: %.2f |", db->students[i].ID, db->students[i].name, db->students[i].grade);
+        printf("| ID: %d | NAME: %-20s | GRADE: %.2f |\n", db->students[i].ID, db->students[i].name, db->students[i].grade);
     }
 }
 
